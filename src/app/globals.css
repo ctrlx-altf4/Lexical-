@@ -1,27 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+a @layer components {
+  .lexicalEditor__h1 {
+    @apply text-2xl;
+  }
+  .lexicalEditor__h2 {
+    @apply text-xl;
+  }
+  .lexicalEditor__h3 {
+    @apply text-lg;
+  }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  .lexicalEditor__link {
+    @apply underline text-blue-500 cursor-pointer;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .lexicalEditor__ul {
+    .lexicalEditor__listItem {
+      @apply list-disc ml-8 pl-1;
+    }
+    .lexicalEditor__listItemUnchecked,
+    .lexicalEditor__listItemChecked {
+      @apply list-none ml-4 pl-6;
+    }
+  }
+  .lexicalEditor__ol1 {
+    .lexicalEditor__listItem {
+      @apply list-decimal ml-8 pl-1;
+    }
+  }
+
+  .lexical-editor blockquote {
+    @apply ml-5 border-l-2 border-l-slate-200 pl-5 text-slate-600;
+  }
+  .toolbar-item {
+    @apply rounded p-1 hover:bg-stone-200;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.lexicalEditor__listItemUnchecked {
+  position: relative;
+}
+
+.lexicalEditor__listItemUnchecked:before,
+.lexicalEditor:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  top: 6px;
+  left: 0;
+  cursor: pointer;
+  display: block;
+  background-size: cover;
+  position: absolute;
+}
+
+.lexicalEditor__listItemUnchecked[dir="rtl"]:before,
+.lexicalEditor[dir="rtl"]:before {
+  left: auto;
+  right: 0;
+}
+.lexicalEditor__listItemUnchecked:focus:before,
+.lexicalEditor:focus:before {
+  box-shadow: 0 0 0 2px #a6cdfe;
+  border-radius: 2px;
+}
+.lexicalEditor__listItemUnchecked:before {
+  border: 1px solid #999;
+  border-radius: 2px;
+}
+.lexicalEditor:before {
+  border: 1px solid rgb(61, 135, 245);
+  border-radius: 2px;
+  background-color: #3d87f5;
+  background-repeat: no-repeat;
+}
+.lexicalEditor:after {
+  content: "";
+  cursor: pointer;
+  border-color: #fff;
+  border-style: solid;
+  position: absolute;
+  display: block;
+  top: 6px;
+  width: 3px;
+  left: 7px;
+  right: 7px;
+  height: 6px;
+  transform: rotate(45deg);
+  border-width: 0 2px 2px 0;
 }
