@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-a @layer components {
+@layer components {
   .lexicalEditor__h1 {
     @apply text-2xl;
   }
